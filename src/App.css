@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 body {
-  font-family: 'Poppins', sans-serif; /* Replace 'Poppins' with your chosen font */
+  font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -12,14 +12,14 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start; /* Ensures content starts from the top */
+  justify-content: flex-start; 
   font-family: 'Inter', sans-serif;
-  width: 100vw; /* Full viewport width */
+  width: 100vw; 
   background-color: #f5f7fa;
   padding: 0px;
   box-sizing: border-box;
   color: #333;
-  overflow: hidden; /* Prevents accidental overflow */
+  overflow: hidden; 
 }
 
 
@@ -60,7 +60,6 @@ body {
   background-color: #fff;
 }
 
-/* Kanban board container */
 .kanban-columns {
   display: flex;
   justify-content: space-around;
@@ -71,7 +70,6 @@ body {
   padding: 0 20px;
 }
 
-/* Column containers */
 .kanban-column {
   background-color: #fff;
   border-radius: 10px;
@@ -90,7 +88,6 @@ body {
   padding-bottom: 10px;
 }
 
-/* Ticket card styling */
 .kanban-card {
   background-color: #fff;
   padding: 20px;
@@ -105,21 +102,19 @@ body {
   transform: translateY(-3px);
 }
 
-/* Card Title */
+
 .kanban-card h3 {
   font-size: 1.2rem;
   color: #333;
   margin-bottom: 10px;
 }
 
-/* Priority Status and User Info */
 .kanban-card p {
   font-size: 0.9rem;
   color: #666;
   margin-bottom: 8px;
 }
 
-/* New styles for group box */
 .kanban-groups {
   display: flex;
   flex-wrap: wrap;
@@ -130,14 +125,12 @@ body {
 }
 
 .group-box {
-  /* background-color: #fff; */
   align-items: center;
   border-radius: 10px;
   padding-left: 15px;
   padding-right: 15px;
   flex-wrap: wrap;
   max-width: 500px;
-  /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); */
 }
 
 .group-title {
@@ -147,62 +140,58 @@ body {
   color: #1a1a1a;
   text-align: left;
   margin-bottom: 5px;
-  /* border-bottom: 2px solid #4a90e2; */
   padding-bottom: 5px;
 }
 
-/* Styling for individual tickets within each group */
 .group-tickets {
   display: flex;
   flex-direction: column;
   gap: 5px;
 }
 
-/* Avatar container */
 .ticket-icons {
   display: flex;
-  align-items: center; /* Center the avatar vertically */
+  align-items: center; 
 }
 
-/* Initials avatar styles */
+
 .initials-avatar {
-  width: 30px; /* Avatar width */
-  height: 30px; /* Avatar height */
-  border-radius: 50%; /* Circular shape */
+  width: 30px; 
+  height: 30px; 
+  border-radius: 50%; 
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 14px; /* Font size for initials */
-  color: white; /* Text color */
-  font-weight: bold; /* Make initials bold */
+  font-size: 14px; 
+  color: white; 
+  font-weight: bold; 
 }
 
-/* User profile image styles */
 .ticket-icons img {
-  width: 30px; /* Width for user profile image */
-  height: 30px; /* Height for user profile image */
-  border-radius: 50%; /* Circular shape */
-  margin-left: 5px; /* Space between title and image */
+  width: 30px; 
+  height: 30px; 
+  border-radius: 50%;
+  margin-left: 5px; 
 }
 
-/* Ticket card styles */
+
 .ticket-card {
-  background-color: #ffffff; /* White background for tickets */
-  border-radius: 5px; /* Rounded corners */
-  padding: 10px; /* Padding for the card */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  margin-bottom: 10px; /* Space between tickets */
+  background-color: #ffffff; 
+  border-radius: 5px; 
+  padding: 10px; 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+  margin-bottom: 10px; 
 }
 
-/* Specific priority styles for tickets */
+
 .priority-1 {
-  border-left: 5px solid red; /* High priority color */
+  border-left: 5px solid red; 
 }
 .priority-2 {
-  border-left: 5px solid orange; /* Medium priority color */
+  border-left: 5px solid orange; 
 }
 .priority-3 {
-  border-left: 5px solid green; /* Low priority color */
+  border-left: 5px solid green; 
 }
 
 .priority-circle {
@@ -211,42 +200,42 @@ body {
   right: 5px;
   width: 10px;
   height: 10px;
-  border-radius: 50%; /* Makes it circular */
-  border: 1px solid #ffffff; /* Optional: to add a border around the circle */
+  border-radius: 50%; 
+  border: 1px solid #ffffff; 
 }
 
 
 
 .ticket-card {
-  background-color: #ffffff; /* White background */
+  background-color: #ffffff; 
   padding-left: 25px;
-  margin-bottom: 10px; /* Space between tickets */
-  border-radius: 7px; /* Rounded corners */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  margin-bottom: 10px; 
+  border-radius: 7px; 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   font-family: 'Inter', sans-serif;
-  width: 100%; /* Full width inside the column */
+  width: 100%; 
   box-sizing: border-box;
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; 
 }
 
 .ticket-card:hover {
-  transform: translateY(-2px); /* Slightly lift on hover */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+  transform: translateY(-2px); 
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); 
 }
 
 .ticket-header {
-  font-size: 1rem; /* Slightly bigger font for ticket ID */
-  color: #6b7280; /* Lighter gray for the ID text */
-  font-weight: 600; /* Bold for emphasis */
+  font-size: 1rem; 
+  color: #6b7280;
+  font-weight: 600;
 }
 
 .ticket-title {
-  font-size: 1.5rem; /* Larger font for ticket title */
-  font-weight: 700; /* Bold text */
-  color: #333; /* Darker text for readability */
+  font-size: 1.5rem;
+  font-weight: 700; 
+  color: #333; 
   margin-top: 8px;
 }
 
@@ -254,33 +243,30 @@ body {
   display: flex;
   align-items: center;
   margin-top: 10px;
-  font-size: 0.875rem; /* Smaller font for the badge */
-  color: #6b7280; /* Gray text */
-  background-color: #f3f4f6; /* Light gray background */
+  font-size: 0.875rem;
+  color: #6b7280; 
+  background-color: #f3f4f6; 
   padding: 5px 10px;
   border-radius: 8px;
 }
 
 .ticket-badge-icon {
   display: inline-block;
-  background-color: #d1d5db; /* Lighter gray for the badge icon */
+  background-color: #d1d5db; 
   padding: 5px;
-  border-radius: 50%; /* Rounded badge icon */
+  border-radius: 50%; 
   margin-right: 8px;
 }
 
 .ticket-user-avatar {
   width: 40px;
   height: 40px;
-  border-radius: 50%; /* Circular avatar */
+  border-radius: 50%; 
   overflow: hidden;
   margin-left: auto;
 }
 
 
-
-
-/* Ticket icons, for assigned users or other small elements */
 .ticket-icons {
   display: flex;
   align-items: center;
@@ -295,7 +281,6 @@ body {
   object-fit: cover;
 }
 
-/* SVG buttons */
 .add-button {
   display: flex;
   align-items: center;
@@ -315,7 +300,6 @@ body {
   background-color: #3aa010;
 }
 
-/* Empty state message */
 .empty-column {
   text-align: center;
   color: #999;
@@ -323,7 +307,7 @@ body {
   padding: 20px;
 }
 
-/* Responsive design */
+
 @media (max-width: 768px) {
   .kanban-columns {
     flex-direction: column;
@@ -336,7 +320,6 @@ body {
   }
 }
 
-/* Dropdown Styling */
 .dropdown {
   position: relative;
 }
@@ -360,7 +343,7 @@ body {
   display: block;
 }
 
-/* Scrollbar styles */
+
 .kanban-column {
   overflow-y: auto;
   max-height: 500px;
@@ -384,89 +367,87 @@ body {
   background: #555;
 }
 
-/* Dropdown container style */
+
 .dropdown-container {
   border: 0.5px;
   position: relative;
   display: inline-block;
 }
 
-/* Style for the dropdown button */
 .dropdown-button {
-  background-color: #ffffff; /* Button background color */
-  color: black; /* Text color */
-  padding: 8px 16px; /* Smaller padding for a compact button */
-  border-radius: 3px; /* Slight curve for the button corners */
-  cursor: pointer; /* Pointer cursor on hover */
-  font-size: 14px; /* Adjust font size */
+  background-color: #ffffff;
+  color: rgb(20, 20, 20); 
+  padding: 3px 8px; 
+  border-radius: 3px; 
+  cursor: pointer; 
+  font-size: 14px; 
   z-index: 1;
-  text-align: center; /* Center the text */
-  display: inline-block; /* Allows it to be inline */
-  transition: background-color 0.3s ease; /* Smooth hover effect */
+  text-align: center; 
+  align-items: center;
+  justify-content: center;
+  display: inline-block; 
+  transition: background-color 0.3s ease; 
 }
 
 .dropdown-button img {
-  margin-right: 10px; /* Add some space between icon and text */
+  margin-right: 10px; 
 }
 
 .dropdown-button:hover {
-  background-color: #c0c0c0; /* Darker shade on hover */
+  background-color: #c0c0c0; 
 }
 
-/* Style for the dropdown content */
 .dropdown-content {
-  display: none; /* Initially hide the dropdown */
-  position: absolute; /* Position relative to the container */
+  display: none; 
+  position: absolute; 
   top: 100%;
   left: 0;
-  background-color: #f9f9f9; /* Light background for dropdown */
-  min-width: 250px; /* Minimum width for the dropdown */
-  /* max-height: 50px; */
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Add a shadow for a dropdown feel */
-  z-index: 2; /* Make sure it sits on top */
-  border-radius: 3px; /* Slight rounding of the edges */
+  background-color: #f9f9f9;
+  min-width: 250px; 
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 2; 
+  border-radius: 3px; 
   padding-top: 15px;
   padding-left: 15px;
   padding-bottom: 10px;
   padding-right: 10px;
-  right: 0; /* Align dropdown content to the right */
+  right: 0; 
   
 }
 .inner-dropdown {
   font-size: 14px;
   color: #888;
   display: flex;
-  align-items: center; /* Ensure vertical alignment of text and select */
-  gap: 60px; /* Add some space between label and select */
+  align-items: center; 
+  gap: 60px;
 }
 
 .dropdown-content label {
   display: flex;
   flex-direction: row;
-  align-items: center; /* Align label and select on the same line */
-  gap: 10px; /* Spacing between label and select */
-  margin-bottom: 10px; /* Spacing between labels */
-  white-space: nowrap; /* Prevents text from wrapping */
+  align-items: center; 
+  gap: 10px;
+  margin-bottom: 10px;
+  white-space: nowrap; 
 }
 
 
-/* Dropdown visible when isDropdownOpen is true */
 .dropdown-content.open {
-  display: block; /* Show dropdown when it's open */
+  display: block; 
 }
 
 
 
 .dropdown-content select {
-  width: 100%; /* Dropdown select takes full width */
-  padding: 5px; /* Add padding inside the select */
-  font-size: 14px; /* Adjust font size */
-  border-radius: 4px; /* Slight rounding of select box */
-  border: 1px solid #ccc; /* Light border around select */
+  width: 100%; 
+  padding: 5px; 
+  font-size: 14px; 
+  border-radius: 4px; 
+  border: 1px solid #ccc; 
 }
 
 .dropdown-content select:hover {
-  border-color: #007bff; /* Border color on hover */
+  border-color: #007bff; 
 }
 
 .select{
@@ -480,26 +461,26 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Full viewport height */
-  background-color: rgba(255, 255, 255, 0.8); /* Slightly translucent white */
+  height: 100vh; 
+  background-color: rgba(255, 255, 255, 0.8); 
   color:black;
-  position: fixed; /* Fixed position to cover the entire screen */
+  position: fixed; 
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 1000; /* Ensure it appears above other content */
+  z-index: 1000; 
 }
 
 .loading-spinner {
-  border: 8px solid #157f92; /* Light grey */
-  border-top: 8px solid #a59b9b; /* Blue */
+  border: 8px solid #157f92;
+  border-top: 8px solid #a59b9b; 
   color: black;
   border-radius: 50%;
-  width: 60px; /* Size of the spinner */
-  height: 60px; /* Size of the spinner */
-  animation: spin 1s linear infinite; /* Animation for spinning */
-  margin-bottom: 20px; /* Space between spinner and text */
+  width: 60px; 
+  height: 60px; 
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px; 
 }
 
 @keyframes spin {

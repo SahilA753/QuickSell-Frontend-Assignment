@@ -21,18 +21,15 @@ const priorityColors = {
 
 function App() {
   const [tickets, setTickets] = useState(() => {
-    // Retrieve tickets from localStorage or initialize as empty array
     const savedTickets = localStorage.getItem('tickets');
     return savedTickets ? JSON.parse(savedTickets) : [];
   });
   const [users, setUsers] = useState([]);
   const [groupBy, setGroupBy] = useState(() => {
-    // Retrieve groupBy from localStorage or initialize as 'status'
     const savedGroupBy = localStorage.getItem('groupBy');
     return savedGroupBy ? savedGroupBy : 'status';
   });
   const [sortBy, setSortBy] = useState(() => {
-    // Retrieve sortBy from localStorage or initialize as 'priority'
     const savedSortBy = localStorage.getItem('sortBy');
     return savedSortBy ? savedSortBy : 'priority';
   });
@@ -69,12 +66,10 @@ function App() {
   }, []);
 
   useEffect(() => {
-    // Save tickets to localStorage
     localStorage.setItem('tickets', JSON.stringify(tickets));
   }, [tickets]);
 
   useEffect(() => {
-    // Save groupBy and sortBy to localStorage
     localStorage.setItem('groupBy', groupBy);
     localStorage.setItem('sortBy', sortBy);
   }, [groupBy, sortBy]);
