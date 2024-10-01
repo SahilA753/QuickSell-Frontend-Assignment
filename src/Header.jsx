@@ -6,13 +6,21 @@ function Header({ dropdownImg, isDropdownOpen, setIsDropdownOpen, groupBy, setGr
       <h2>Ticket Management</h2>
       <div className="controls">
         <div className="dropdown-container">
-          <button
+        <button
             className="dropdown-button"
-            style={{ justifyContent: 'center' }}
+            style={{
+                display: 'flex',        
+                alignItems: 'center',
+                justifyContent: 'center', 
+                gap: '8px' 
+            }}
             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-          >
-            <img src={dropdownImg} alt="Display" /> Display <img src='/assets/down.svg' />
-          </button>
+            >
+            <img src={dropdownImg} alt="Display" /> 
+            Display 
+            <img src='/assets/down.svg' alt="Dropdown arrow" />
+            </button>
+
           <div className={`dropdown-content ${isDropdownOpen ? 'open' : ''}`}>
             <label>
               <div className='inner-dropdown'>

@@ -382,19 +382,26 @@ body {
   cursor: pointer; 
   font-size: 14px; 
   z-index: 1;
+  border-width: 1px;
+  border-color: #333;
   text-align: center; 
   align-items: center;
   justify-content: center;
   display: inline-block; 
-  transition: background-color 0.3s ease; 
+  transition: background-color 0.3s ease;
+
+  /* Add shadow */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow effect */
 }
+
 
 .dropdown-button img {
   margin-right: 10px; 
 }
 
 .dropdown-button:hover {
-  background-color: #c0c0c0; 
+  /* Optional: make shadow more prominent on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 .dropdown-content {
