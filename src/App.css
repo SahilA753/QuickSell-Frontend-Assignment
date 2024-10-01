@@ -1,4 +1,3 @@
-/* General styling for the Kanban board */
 .kanban-board {
   display: flex;
   flex-direction: column;
@@ -466,3 +465,34 @@
   color: black;
 }
 
+.loading-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  background-color: rgba(255, 255, 255, 0.8); /* Slightly translucent white */
+  color:black;
+  position: fixed; /* Fixed position to cover the entire screen */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000; /* Ensure it appears above other content */
+}
+
+.loading-spinner {
+  border: 8px solid #157f92; /* Light grey */
+  border-top: 8px solid #a59b9b; /* Blue */
+  color: black;
+  border-radius: 50%;
+  width: 60px; /* Size of the spinner */
+  height: 60px; /* Size of the spinner */
+  animation: spin 1s linear infinite; /* Animation for spinning */
+  margin-bottom: 20px; /* Space between spinner and text */
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

@@ -138,7 +138,12 @@ function App() {
     });
   };
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return (
+    <div className="loading-screen">
+      <div className="loading-spinner"></div>
+      <h2>Loading...</h2>
+    </div>
+  );
 
   const groupedTickets = getGroupedTickets();
 
