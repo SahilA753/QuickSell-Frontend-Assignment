@@ -12,43 +12,52 @@ const priorityMap = {
 };
 
 const priorityColors = {
-  Urgent: '#ff4d4f',  // High priority (Red)
-  High: '#ffa940',    // Medium priority (Orange)
+  Urgent: '#ff4d4f',
+  High: '#ffa940',
   Medium: '#fadb14',
   Low: '#52c41a',
   'No priority': '#d9d9d9',
 };
 
 function App() {
-  const [tickets, setTickets] = useState([]);
+  const [tickets, setTickets] = useState(() => {
+    // Retrieve tickets from localStorage or initialize as empty array
+    const savedTickets = localStorage.getItem('tickets');
+    return savedTickets ? JSON.parse(savedTickets) : [];
+  });
   const [users, setUsers] = useState([]);
-  const [groupBy, setGroupBy] = useState('status');
-  const [sortBy, setSortBy] = useState('priority');
+  const [groupBy, setGroupBy] = useState(() => {
+    // Retrieve groupBy from localStorage or initialize as 'status'
+    const savedGroupBy = localStorage.getItem('groupBy');
+    return savedGroupBy ? savedGroupBy : 'status';
+  });
+  const [sortBy, setSortBy] = useState(() => {
+    // Retrieve sortBy from localStorage or initialize as 'priority'
+    const savedSortBy = localStorage.getItem('sortBy');
+    return savedSortBy ? savedSortBy : 'priority';
+  });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false); // For handling dropdown visibility
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   useEffect(() => {
-    // Fetch data from the provided API
     const fetchData = async () => {
       try {
         const response = await fetch('https://api.quicksell.co/v1/internal/frontend-assignment');
         const data = await response.json();
-
-        // Generate a random color for each user
+        
         const usersWithColors = data.users.map(user => ({
           ...user,
-          color: generateRandomColor() // Assign a random color
+          color: generateRandomColor()
         }));
-
-        // Map ticket priorities to their string representation
+        
         const mappedTickets = data.tickets.map(ticket => ({
           ...ticket,
-          priority: priorityMap[ticket.priority] // Map numeric priority to string
+          priority: priorityMap[ticket.priority]
         }));
 
-        setTickets(mappedTickets); // Set mapped tickets
-        setUsers(usersWithColors); // Set users with colors
+        setTickets(mappedTickets);
+        setUsers(usersWithColors);
         setLoading(false);
       } catch (err) {
         setError('Failed to fetch data from the API');
@@ -59,20 +68,28 @@ function App() {
     fetchData();
   }, []);
 
-  // Helper function to get the user's name from userId
+  useEffect(() => {
+    // Save tickets to localStorage
+    localStorage.setItem('tickets', JSON.stringify(tickets));
+  }, [tickets]);
+
+  useEffect(() => {
+    // Save groupBy and sortBy to localStorage
+    localStorage.setItem('groupBy', groupBy);
+    localStorage.setItem('sortBy', sortBy);
+  }, [groupBy, sortBy]);
+
   const getUserById = (userId) => {
     const user = users.find((user) => user.id === userId);
     return user ? user.name : 'Unknown User';
   };
 
-  // Helper function to get the user's initials
   const getUserInitials = (name) => {
     if (!name) return '';
     const nameParts = name.split(' ');
     return nameParts[0][0] + (nameParts[1] ? nameParts[1][0] : '');
   };
 
-  // Function to generate random background color for initials avatar
   const generateRandomColor = () => {
     const letters = '0123456789ABCDEF';
     let color = '#';
@@ -82,7 +99,6 @@ function App() {
     return color;
   };
 
-  // Group tickets manually by status, user, or priority
   const getGroupedTickets = () => {
     let groupedTickets = {};
 
@@ -168,13 +184,12 @@ function App() {
           Object.keys(groupedTickets).map((group) => (
             <div key={group} className="group-box">
               <h2 className="group-title" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <div style={{ display: 'flex', alignItems: 'center' }}>
+                <div style={{ display: 'flex', alignItems: 'center' }}>
                   {groupBy === 'user' ? (
-                    // Render initials avatar with a background color when grouped by user
                     <div 
                       className="initials-avatar" 
                       style={{
-                        backgroundColor: users.find(user => user.id === group)?.color || generateRandomColor(), // Use existing color or generate a random one
+                        backgroundColor: users.find(user => user.id === group)?.color || generateRandomColor(),
                         width: '40px', 
                         height: '40px', 
                         display: 'flex', 
@@ -182,15 +197,14 @@ function App() {
                         alignItems: 'center', 
                         borderRadius: '50%',
                         marginRight: '5px',
-                        color: 'white', // Set text color to white for better contrast
-                        fontWeight: 'bold', // Make initials bold
+                        color: 'white',
+                        fontWeight: 'bold',
                         fontSize: '16px'
                       }}
                     >
-                      {getUserInitials(getUserById(group))} {/* Display the initials */}
+                      {getUserInitials(getUserById(group))}
                     </div>
                   ) : (
-                    // Keep the default icon for other groupings (status, priority)
                     <img
                       src={`./assets/${groupBy === 'status' ? `${group}` : `${group}`}.svg`}
                       className="group-icon"
@@ -222,66 +236,63 @@ function App() {
                   return (
                     <div key={ticket.id} className={`ticket-card`}>
                       <h3 style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', margin: '0px 10px 10px 0px' }}>
-                        <span style={{ paddingLeft: '0px', color: 'gray' }}>{ticket.id}</span> {/* Add padding to the title */}
-                        
-                       {(groupBy!='user')&& (<div style={{ display: 'flex', alignItems: 'center' }}>
-                          <div className="ticket-icons" style={{ paddingRight: '10px' }}> {/* Add padding to the image container */}
-                            <div className="initials-avatar" style={{ backgroundColor }}>
-                              {initials}
+                        <span style={{ paddingLeft: '0px', color: 'gray' }}>{ticket.id}</span>
+                        {(groupBy!='user')&& (
+                          <div style={{ display: 'flex', alignItems: 'center' }}>
+                            <div className="ticket-icons" style={{ paddingRight: '10px' }}>
+                              <div className="initials-avatar" style={{ backgroundColor }}>
+                                {initials}
+                              </div>
                             </div>
                           </div>
-                        </div>)}
+                        )}
                       </h3>
                       
                       <div>
-                      <h3 style={{ 
+                        <h3 style={{ 
                           display: 'flex', 
-                          justifyContent: 'flex-start', // Align items to the left
-                          // alignItems: 'center', 
+                          justifyContent: 'flex-start',
                           width: '100%', 
                           margin: '10px 10px 0px 0px',
-                          gap: '10px' // Add a gap of 10px between the icon and the title
+                          gap: '10px'
                         }}>
-                          
-                          {(groupBy!='status')&&(<img 
-                            src={`./assets/${ticket.status}.svg`} // Assuming status icon files are named after the status
-                            alt={ticket.status}
-                            style={{ width: '20px', height: '20px' }} // Adjust icon size as needed
-                          />)}
-
-                          {ticket.title}
-                      </h3>
-
-                      <div style={{display:'flex',direction:'row',gap:'10px', marginTop:'12px'}}>
-                        {ticket.tag && ticket.tag.length > 0 && (
-                          <div style={{
-                            display: 'inline-block',
-                            padding: '2px 8px',
-                            marginTop: '5px',
-                            border: '0.5px solid gray',
-                            borderRadius: '5px',
-                            fontSize: '12px',
-                            color: 'gray'
-                          }}>
-                            {ticket.tag.join(', ')} {/* Joining the tags with a comma if there are multiple */}
-                          </div>
-                        )}
-
-                        {(groupBy === 'status' || groupBy === 'user') && (
-                          <div style={{ display: 'flex', alignItems: 'center', marginRight: '10px' }}>
+                          {(groupBy!='status')&&(
                             <img 
-                              src={`./assets/${ticket.priority}.svg`}  // Assuming priority is the name of the icon file
-                              alt={ticket.priority}
-                              style={{ width: '20px', height: '20px', marginRight: '5px' }} // Adjust size as needed
+                              src={`./assets/${ticket.status}.svg`}
+                              alt={ticket.status}
+                              style={{ width: '20px', height: '20px' }} 
                             />
-                            <span>{ticket.priority}</span> 
-                          </div>
-                        )}
-                      </div>
-                      </div>
-                    
-                    </div>
+                          )}
+                          {ticket.title}
+                        </h3>
 
+                        <div style={{display:'flex',direction:'row',gap:'10px', marginTop:'12px'}}>
+                          {ticket.tag && ticket.tag.length > 0 && (
+                            <div style={{
+                              display: 'inline-block',
+                              padding: '2px 8px',
+                              marginTop: '5px',
+                              border: '0.5px solid gray',
+                              borderRadius: '5px',
+                              fontSize: '12px',
+                              color: 'gray'
+                            }}>
+                              {ticket.tag.join(', ')}
+                            </div>
+                          )}
+                          {(groupBy === 'status' || groupBy === 'user') && (
+                            <div style={{ display: 'flex', alignItems: 'center', marginRight: '10px' }}>
+                              <img 
+                                src={`./assets/${ticket.priority}.svg`} 
+                                alt={ticket.priority}
+                                style={{ width: '20px', height: '20px', marginRight: '5px' }} 
+                              />
+                              <span>{ticket.priority}</span> 
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
                   );
                 })}
               </div>
@@ -289,8 +300,6 @@ function App() {
           ))
         )}
       </div>
-
-      
     </div>
   );
 }
