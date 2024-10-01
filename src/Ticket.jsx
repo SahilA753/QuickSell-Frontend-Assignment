@@ -1,5 +1,5 @@
 import React from 'react';
-import { getUserById, getUserInitials } from './Helpers';
+import { getUserById, getUserInitials, generateRandomColor, priorityMap } from './Helpers';
 
 function Ticket({ ticket, users, groupBy, defaultUserImg }) {
   const user = users.find(user => user.id === ticket.userId);
